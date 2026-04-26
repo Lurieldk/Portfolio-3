@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Ravi</title>
+  <!-- Librairie Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      background: #fff; /* Fond blanc */
+      color: #333;
+    }
+
+    /* Barre de navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    nav i {
+      margin-right: 6px;
+      color: #007BFF; /* Icônes bleues */
+    }
+
+    .cv-btn {
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* Menu hamburger */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #333;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Section accueil */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 4rem 2rem;
+    }
+
+    .hero .intro {
+      max-width: 50%;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .hero h2 {
+      color: #007BFF;
+      font-weight: bold;
+    }
+
+    .hero .socials a {
+      margin-right: 1rem;
+      text-decoration: none;
+      color: #007BFF;
+      font-size: 1.5rem;
+    }
+
+    .photo img {
+      width: 250px;
+      border-radius: 50%;
+      border: 4px solid #007BFF;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      color: #007BFF;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+    #skills ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #skills li {
+      margin-bottom: 0.5rem;
+      font-weight: bold; /* Mise en évidence */
+    }
+
+    #skills i {
+      margin-right: 8px;
+      color: #007BFF;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero .intro {
+        max-width: 100%;
+      }
+
+      .photo img {
+        width: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barre de navigation -->
+  <nav>
+    <div class="menu-toggle" onclick="toggleMenu(this)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul id="menu">
+      <li><a href="#home"><i class="fas fa-home"></i>Accueil</a></li>
+      <li><a href="#about"><i class="fas fa-user"></i>À propos</a></li>
+      <li><a href="#skills"><i class="fas fa-cogs"></i>Compétences</a></li>
+      <li><a href="#services"><i class="fas fa-briefcase"></i>Services</a></li>
+      <li><a href="#projects"><i class="fas fa-project-diagram"></i>Réalisations</a></li>
+      <li><a href="#blogs"><i class="fas fa-blog"></i>Blogs</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+    </ul>
+    <a href="CV.pdf" download class="cv-btn">
+  <i class="fas fa-download"></i> Télécharger CV
+</a>
+  </nav>
+
+  <!-- Section d’accueil -->
+  <section id="home" class="hero">
+    <div class="intro">
+      <h1><strong>Lurielgeorgy Raviny DIKATSOU</strong></h1>
+      <h2>Responsable Commercial & Formateur en Excel avancé</h2>
+      <p><strong>Je coordonne une équipe</strong>, dispense des formations et développe des solutions digitales modernes. 
+         Passionné par l’organisation et l’analyse de données, je transforme les idées en projets concrets.</p>
+      <div class="socials">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+       <div class="photo">
+      <img src="C:\Users\HELLO\Desktop\fichiers\profil.jpg" alt="Photo de profil" style="width:350px; border-radius:50%; border:4px solid #007BFF;">
+    </div>
+
+  </section>
+
+  <!-- Section À propos -->
+  <section id="about">
+    <h2><i class="fas fa-user"></i> À propos</h2>
+    <p>
+      <strong>Responsable Commercial & Formateur en Excel Avancé</strong><br><br>
+      Je coordonne une équipe dynamique et assure la formation continue pour développer les compétences de chacun. 
+      Mon rôle combine <strong>leadership opérationnel</strong> et <strong>expertise technique</strong>, avec une spécialisation dans l’optimisation des processus grâce à Excel et VBA.
+    </p>
+    <p>
+      Passionné par l’organisation et l’analyse de données, je conçois des <strong>tableaux de bord performants</strong>, des <strong>automatisations intelligentes</strong> et des <strong>solutions digitales modernes</strong> qui transforment les idées en projets concrets.
+    </p>
+    <p>
+      En tant qu’encadreur, j’accompagne mes collaborateurs dans la maîtrise des outils numériques, en mettant l’accent sur :
+      <ul>
+        <li><i class="fas fa-chart-line"></i> <strong>Analyse de données avancée</strong> pour une prise de décision éclairée</li>
+        <li><i class="fas fa-code"></i> <strong>Automatisation VBA</strong> pour gagner en efficacité et réduire les tâches répétitives</li>
+        <li><i class="fas fa-table"></i> <strong>Création de tableaux de bord interactifs</strong> pour un suivi clair et ergonomique</li>
+        <li><i class="fas fa-chalkboard-teacher"></i> <strong>Formation pratique et participative</strong> adaptée aux besoins de l’équipe</li>
+      </ul>
+    </p>
+    <p>
+      Mon objectif est de <strong>allier performance commerciale et excellence technique</strong>, en favorisant une culture de collaboration et d’innovation.
+    </p>
+  </section>
+
+
+  <!-- Section Compétences -->
+  <section id="skills">
+    <h2><i class="fas fa-cogs"></i> Compétences</h2>
+    <ul>
+      <li><i class="fas fa-table"></i> Excel avancé : <strong>analyse de données</strong>, automatisation VBA</li>
+      <li><i class="fas fa-chart-line"></i> Création de <strong>tableaux de bord</strong> avec TCD</li>
+      <li><i class="fas fa-users"></i> <strong>Coordination</strong> et formation d’équipe</li>
+      <li><i class="fas fa-briefcase"></i> Responsable commercial et <strong>gestion opérationnelle</strong></li>
+      <li><i class="fas fa-comments"></i> <strong>Communication</strong> et leadership</li>
+    </ul>
+  </section>
+
+  <!-- Section Services -->
+    <section id="skills">
+    <h2><i class="fas fa-cogs"></i> Services</h2>
+
+    <!-- Module Débutant -->
+    <h3 style="color:#007BFF;"><i class="fas fa-seedling"></i> Module Débutant</h3>
+    <ul>
+      <li><i class="fas fa-table"></i> Bases d’Excel : formules simples, mise en forme</li>
+      <li><i class="fas fa-file-excel"></i> Gestion de feuilles et classeurs</li>
+      <li><i class="fas fa-sort"></i> Tri et filtres de données</li>
+    </ul>
+
+    <!-- Module Intermédiaire -->
+    <h3 style="color:#007BFF;"><i class="fas fa-level-up-alt"></i> Module Intermédiaire</h3>
+    <ul>
+      <li><i class="fas fa-chart-pie"></i> Graphiques et visualisation de données</li>
+      <li><i class="fas fa-database"></i> Fonctions avancées (RECHERCHEV, INDEX, EQUIV)</li>
+      <li><i class="fas fa-layer-group"></i> Tableaux croisés dynamiques (TCD)</li>
+    </ul>
+
+    <!-- Module Avancé -->
+    <h3 style="color:#007BFF;"><i class="fas fa-star"></i> Module Avancé</h3>
+    <ul>
+      <li><i class="fas fa-code"></i> Automatisation avec VBA</li>
+      <li><i class="fas fa-project-diagram"></i> Création de tableaux de bord interactifs</li>
+      <li><i class="fas fa-tasks"></i> Optimisation des processus commerciaux</li>
+    </ul>
+
+    <!-- Module Pro -->
+    <h3 style="color:#007BFF;"><i class="fas fa-crown"></i> Module Pro</h3>
+    <ul>
+      <li><i class="fas fa-users"></i> Encadrement et formation d’équipe en Excel avancé</li>
+      <li><i class="fas fa-lightbulb"></i> Conception de solutions digitales sur mesure</li>
+      <li><i class="fas fa-chalkboard-teacher"></i> Expertise en analyse de données et reporting stratégique</li>
+    </ul>
+  </section>
+
+
+  <!-- Section Réalisations -->
+  <section id="projects">
+    <h2><i class="fas fa-project-diagram"></i> Réalisations</h2>
+    <ul>
+      <li><i class="fas fa-chart-bar"></i> 
+        <strong>Tableau de bord Excel</strong> Pour gestion de caisse et suivi des ventes 
+        – <a href="fichiers/PROJETRESTOCAISSE.xlsm" target="_blank">Télécharger</a>
+      </li>
+      <li><i class="fas fa-code"></i> 
+        <strong>Automatisation VBA</strong> Progiciel de gestion de stock 
+        – <a href="C:\Users\HELLO\Desktop\fichiers\GestionStocks.xlsm" target="_blank">Télécharger</a>
+      </li>
+      <li><i class="fas fa-mobile-alt"></i> 
+        <strong>Application AppSheet</strong> pour visites en magasin 
+        – <a href="https://www.appsheet.com/start/c6379db6-f91a-4f17-ab0e-94f2a03b0d6c?platform=desktop#appName=CHECKLIST-830138842&vss=H4sIAAAAAAAAA6XOQQrCMBQE0KvIrHOCLC0uRBRBcWNcxOYXgzUpTaqWkLv7qxbX6jIT3vxJuFq6baIuz5D79HktqIdEUtj2DSlIhcK72PpaQSis9OUVTteT4uRLr5CRD2L0kQJk-o7L_64LWEMu2spSO3QNkjvejr8HxcFokAUuXdTHmp6D2eTMWeXLLpDZ8ZQfJoS5m90b7czSG66sdB0oPwAho0CdZQEAAA==&view=BP%20Choco" target="_blank">Consulter</a>
+      </li>
+      <li><i class="fas fa-chalkboard-teacher"></i> 
+        <strong>Formation interne</strong> sur l’analyse de données 
+        – <a href="fichiers/FormationExcel.xlsx" target="_blank">Télécharger</a>
+      </li>
+    </ul>
+  </section>
+
+
+  <!-- Section Blogs -->
+  <section id="blogs">
+    <h2><i class="fas fa-blog"></i> Blogs</h2>
+    <p>Bientôt disponible : mes articles sur le <strong>développement web</strong>, l’<strong>analyse de données</strong> et mes <strong>astuces techniques</strong>.</p>
+  </section>
+
+  <!-- Section Contact -->
+  <section id="contact">
+    <h2><i class="fas fa-envelope"></i> Contact</h2>
+    <p>📧 <strong>ravidikatsou.fils@gmail.com</strong></p>
+     <p><i class="fas fa-mobile-alt"></i>  <strong>781883408 (+221)</strong></p> </section>
+
+  <script>
+    // Menu hamburger
+    function toggleMenu(toggleBtn) {
+      toggleBtn.classList.toggle("active");
+      document.getElementById("menu").classList.toggle("active");
+    }
+
+    // Animation scroll
+    const sections = document.querySelectorAll("section");
+    const options = { threshold: 0.2 };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
